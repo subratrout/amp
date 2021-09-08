@@ -20,6 +20,13 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
+  <% form.fields_for :question do |question| %>
+    <%= question.label :body %>
+    <%= question.text_field :body %>
+
+    <%= question.label :answer %>
+    <%= question.text_field :answer %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

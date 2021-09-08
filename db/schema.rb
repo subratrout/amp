@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_220105) do
+ActiveRecord::Schema.define(version: 2021_09_08_165254) do
+
+  create_table "questions", force: :cascade do |t|
+    t.string "body"
+    t.boolean "answer"
+    t.integer "survey_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
 
   create_table "surveys", force: :cascade do |t|
     t.string "name"
@@ -19,4 +28,5 @@ ActiveRecord::Schema.define(version: 2021_09_07_220105) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "questions", "surveys"
 end
